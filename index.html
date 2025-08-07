@@ -5,50 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>click_to_prod</title>
     <style>
-        /* --- Global Styles & Resets --- */
+        /* CSS is unchanged */
         @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700;800&display=swap');
-
         :root {
-            --background: #121212;
-            --surface: #1e1e1e;
-            --primary: #03b6fc; 
-            --primary-shadow: rgba(3, 182, 252, 0.2); 
-            --primary-shadow-hover: rgba(3, 182, 252, 0.3);
-            --primary-variant: #02a8c2;
-            --text-primary: #FFFFFF;
-            --text-secondary: #B0B0B0;
-            --border-color: #2a2a2a;
+            --background: #121212; --surface: #1e1e1e; --primary: #03b6fc; --primary-shadow: rgba(3, 182, 252, 0.2); --primary-shadow-hover: rgba(3, 182, 252, 0.3); --primary-variant: #02a8c2; --text-primary: #FFFFFF; --text-secondary: #B0B0B0; --border-color: #2a2a2a;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Source Code Pro', monospace;
-            background-color: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
+        body { font-family: 'Source Code Pro', monospace; background-color: var(--background); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- Navigation --- */
         nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
         .logo { font-weight: 700; font-size: 1.5rem; }
         .google-btn { display: flex; align-items: center; background-color: var(--text-primary); color: #333; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background-color 0.3s ease; }
         .google-btn:hover { background-color: #f1f1f1; }
         .google-btn svg { margin-right: 12px; width: 18px; height: 18px; }
-
-        /* --- Hero Section --- */
         .hero { text-align: center; padding: 120px 0; }
         .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; background: linear-gradient(90deg, #FFFFFF, #B0B0B0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero .slogan { font-size: 1.5rem; color: var(--primary); margin-bottom: 2rem; font-weight: 500; }
         .hero .price { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
         .cta-btn { background-color: var(--primary); color: var(--background); padding: 15px 35px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 700; transition: transform 0.3s ease, box-shadow 0.3s ease; display: inline-block; box-shadow: 0 4px 15px var(--primary-shadow); }
         .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px var(--primary-shadow-hover); }
-
-        /* --- Bento Grid Section --- */
         .bento-section { padding: 80px 0; }
         .bento-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; font-weight: 700; }
         .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -60,14 +35,8 @@
         .bento-box.col-span-3 { grid-column: span 3; text-align: center; background: linear-gradient(45deg, var(--primary-variant), var(--primary)); }
         .bento-box.col-span-3 h3 { color: var(--text-primary); }
         .bento-box.col-span-3 p { color: #d4faff; }
-        
-        /* --- MAGIC EFFECT STYLES --- */
         .scramble-effect .letter { display: inline-block; vertical-align: top; }
-
-        /* --- Footer --- */
         footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-secondary); }
-
-        /* --- Responsive --- */
         @media (max-width: 900px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } .hero h1 { font-size: 3rem; } }
         @media (max-width: 600px) { .hero h1 { font-size: 2.5rem; } .hero .slogan { font-size: 1.2rem; } .bento-grid { grid-template-columns: 1fr; } .bento-box.col-span-2, .bento-box.col-span-3 { grid-column: span 1; } }
     </style>
@@ -93,27 +62,29 @@
 
     <!-- Bento Grid Section -->
     <main class="bento-section container">
-         <h2>What You Get</h2>
+        <!-- EFFECT ADDED HERE -->
+         <h2 class="scramble-effect">What You Get</h2>
         <div class="bento-grid">
             <div class="bento-box col-span-2">
                 <h3>Production-Ready Dockerfile</h3>
-                <p class="scramble-effect">We analyze your app and write a clean, efficient, multi-stage Dockerfile ready for any cloud environment.</p>
+                <!-- EFFECT REMOVED FROM HERE -->
+                <p>We analyze your app and write a clean, efficient, multi-stage Dockerfile ready for any cloud environment.</p>
             </div>
             <div class="bento-box">
                 <h3>Automated Deployments</h3>
-                <p class="scramble-effect">A simple CI/CD pipeline using GitHub Actions that deploys your app automatically on every push.</p>
+                <p>A simple CI/CD pipeline using GitHub Actions that deploys your app automatically on every push.</p>
             </div>
             <div class="bento-box">
                 <h3>Cloud Infrastructure</h3>
-                <p class="scramble-effect">Cost-effective setup on Render, DigitalOcean, or AWS, including server, database, and networking.</p>
+                <p>Cost-effective setup on Render, DigitalOcean, or AWS, including server, database, and networking.</p>
             </div>
             <div class="bento-box col-span-2">
                 <h3>Domain & SSL</h3>
-                <p class="scramble-effect">We connect your custom domain name and ensure your site is fully secured with a free SSL certificate (HTTPS).</p>
+                <p>We connect your custom domain name and ensure your site is fully secured with a free SSL certificate (HTTPS).</p>
             </div>
              <div class="bento-box col-span-3">
                 <h3>Complete Handover & Documentation</h3>
-                <p class="scramble-effect">You receive all credentials and a simple README.md file explaining how your new system works, putting you in full control.</p>
+                <p>You receive all credentials and a simple README.md file explaining how your new system works, putting you in full control.</p>
             </div>
         </div>
     </main>
@@ -125,22 +96,18 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR THE MAGIC EFFECT (CORRECTED) -->
+    <!-- JAVASCRIPT is unchanged -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789*#?&';
         const scrambleElements = document.querySelectorAll('.scramble-effect');
         let scrollTimeout;
-
         scrambleElements.forEach(el => {
             const text = el.textContent;
             el.innerHTML = ''; 
             text.split('').forEach(char => {
                 const letterSpan = document.createElement('span');
                 letterSpan.className = 'letter';
-                
-                // --- FIX IS HERE ---
-                // Use a non-breaking space for spaces to maintain layout.
                 if (char === ' ') {
                     letterSpan.innerHTML = '&nbsp;';
                     letterSpan.dataset.originalChar = ' ';
@@ -151,22 +118,16 @@
                 el.appendChild(letterSpan);
             });
         });
-
         function scrambleText() {
             const allLetters = document.querySelectorAll('.scramble-effect .letter');
             allLetters.forEach(letter => {
-                // --- FIX IS HERE ---
-                // Skip scrambling for spaces explicitly.
-                if (letter.dataset.originalChar === ' ') {
-                    return;
-                }
+                if (letter.dataset.originalChar === ' ') { return; }
                 if(Math.random() > 0.3) {
                     const randomIndex = Math.floor(Math.random() * CHARACTERS.length);
                     letter.textContent = CHARACTERS[randomIndex];
                 }
             });
         }
-
         function resetText() {
             const allLetters = document.querySelectorAll('.scramble-effect .letter');
             allLetters.forEach(letter => {
@@ -177,15 +138,11 @@
                 }
             });
         }
-
         window.addEventListener('scroll', () => {
             scrambleText();
             clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                resetText();
-            }, 150);
+            scrollTimeout = setTimeout(() => { resetText(); }, 150);
         });
-        
         resetText();
     });
     </script>
