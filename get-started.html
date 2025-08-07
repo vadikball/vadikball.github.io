@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions - click_to_prod</title>
+    <style>
+        /* --- Global Styles & Resets --- */
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700;800&display=swap');
+
+        :root {
+            --background: #121212;
+            --surface: #1e1e1e;
+            --primary: #03b6fc; 
+            --primary-shadow: rgba(3, 182, 252, 0.2); 
+            --primary-shadow-hover: rgba(3, 182, 252, 0.3);
+            --primary-variant: #02a8c2;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --border-color: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- CORRECTED NAVIGATION STRUCTURE --- */
+        nav { 
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0; 
+        }
+
+        /* The container now lives INSIDE the nav and handles the layout */
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { font-weight: 700; font-size: 1.5rem; }
+        
+        .nav-link {
+            background-color: var(--surface);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .nav-link:hover {
+            background-color: #2c2c2c;
+            border-color: var(--primary);
+        }
+
+        /* --- Main Content Section --- */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        
+        .instruction-box {
+            background-color: var(--surface);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .instruction-box h1 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .instruction-box .lead { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; }
+        .patreon-btn { background-color: var(--primary); color: var(--background); padding: 15px 35px; border-radius: 8px; text-decoration: none; font-size: 1.2rem; font-weight: 700; transition: transform 0.3s ease, box-shadow 0.3s ease; display: inline-block; box-shadow: 0 4px 15px var(--primary-shadow); margin-top: 1rem; }
+        .patreon-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px var(--primary-shadow-hover); }
+        .important-note { margin-top: 2.5rem; padding: 20px; background-color: rgba(3, 182, 252, 0.05); border: 1px solid var(--primary); border-radius: 8px; color: var(--text-secondary); text-align: left; }
+        .important-note strong { color: var(--primary); font-weight: 700; }
+
+        /* --- Footer --- */
+        footer { 
+            width: 100%;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .instruction-box h1 { font-size: 2rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🚀 click_to_prod</div>
+            <a href="/dashboard" class="nav-link" id="dashboard-link">My Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Main Instructions Content -->
+    <main class="main-container">
+        <div class="instruction-box">
+            <h1>Payment & Next Steps</h1>
+            <p class="lead">To get started, please complete the payment on Patreon. This is a one-time payment for the service.</p>
+            
+            <a href="https://patreon.com/yourprofile" class="patreon-btn" target="_blank">Go to Patreon to Pay $399</a>
+            
+            <div class="important-note">
+                <p>
+                    <strong>Important:</strong> Please use the <strong>same Google account on Patreon</strong> that you used to sign in here.
+                </p>
+                <p style="margin-top: 1rem;">
+                    Once you have made the payment, I will manually confirm it and create your project. You will receive an email from me with the next steps.
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            © 2025 click_to_prod. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
