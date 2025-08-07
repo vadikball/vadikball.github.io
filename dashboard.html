@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - click_to_prod</title>
+    <style>
+        /* --- Global Styles & Resets (Identical to previous pages) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700;800&display=swap');
+
+        :root {
+            --background: #121212;
+            --surface: #1e1e1e;
+            --primary: #03b6fc; 
+            --primary-shadow: rgba(3, 182, 252, 0.2); 
+            --primary-shadow-hover: rgba(3, 182, 252, 0.3);
+            --primary-variant: #02a8c2;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --border-color: #2a2a2a;
+            --success-color: #00e676;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Navigation Structure (Identical to Instructions Page) --- */
+        nav { 
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0; 
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { font-weight: 700; font-size: 1.5rem; }
+        .nav-link {
+            background-color: var(--surface);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .nav-link:hover {
+            background-color: #2c2c2c;
+            border-color: var(--primary);
+        }
+
+        /* --- Main Content Section --- */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-grow: 1;
+            padding-top: 60px;
+            padding-bottom: 80px;
+        }
+        
+        .dashboard-header {
+            margin-bottom: 40px;
+        }
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .dashboard-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        
+        /* --- Card Styles (reusing Bento Box style) --- */
+        .status-card {
+            background-color: var(--surface);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .status-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        
+        /* --- Status Tracker --- */
+        .status-tracker {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        /* The progress bar line */
+        .status-tracker::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--border-color);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        /* The colored progress part of the bar */
+        .progress-bar {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+        
+        .status-step {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+        .status-step .dot {
+            width: 20px;
+            height: 20px;
+            background-color: var(--border-color);
+            border: 3px solid var(--background);
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+            transition: background-color 0.5s ease;
+        }
+        .status-step .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* State Modifiers */
+        .status-step.completed .dot {
+            background-color: var(--success-color);
+        }
+        .status-step.active .dot {
+            background-color: var(--primary);
+        }
+         .status-step.active .label {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .status-details p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+         .status-details strong {
+            color: var(--text-primary);
+         }
+        
+        /* --- No Project View --- */
+        .no-project-box {
+            text-align: center;
+            padding: 60px 40px;
+        }
+        .no-project-box p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        .no-project-box a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+         .no-project-box a:hover {
+            text-decoration: underline;
+         }
+
+        /* --- Footer (Identical) --- */
+        footer { width: 100%; border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; color: var(--text-secondary); }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🚀 click_to_prod</div>
+            <a href="/logout" class="nav-link" id="logout-link">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Content -->
+    <main class="main-container">
+        <div class="dashboard-header">
+            <!-- This text would be dynamically populated by JavaScript -->
+            <h1>Welcome, Alex Miller</h1>
+            <p>alex.miller@example.com</p>
+        </div>
+
+        <!-- 
+            IN A REAL APP:
+            - If user has an order, show #active-project-view and hide #no-project-view.
+            - If user has no order, show #no-project-view and hide #active-project-view.
+        -->
+
+        <!-- STATE 1: ACTIVE PROJECT VIEW -->
+        <!-- Set display: none; on this div to test the other state -->
+        <div id="active-project-view">
+            <div class="status-card">
+                <h2>Project Status</h2>
+                
+                <div class="status-tracker">
+                    <!-- The width of this progress bar would be set by JS: 0%, 50%, or 100% -->
+                    <div class="progress-bar" style="width: 50%;"></div>
+                    
+                    <!-- Add 'completed' or 'active' class to steps based on status -->
+                    <div class="status-step completed">
+                        <div class="dot"></div>
+                        <div class="label">Payment Received</div>
+                    </div>
+                    <div class="status-step active">
+                        <div class="dot"></div>
+                        <div class="label">Project In Progress</div>
+                    </div>
+                    <div class="status-step">
+                        <div class="dot"></div>
+                        <div class="label">Completed</div>
+                    </div>
+                </div>
+                
+                <div class="status-details">
+                    <!-- This text would update dynamically -->
+                    <p><strong>Current Status:</strong> Your project is in progress. I have set up the initial cloud infrastructure and am currently writing the Dockerfile. You can expect an email update within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATE 2: NO PROJECT VIEW -->
+        <!-- Set display: block; on this div to test this state -->
+        <div id="no-project-view" style="display: none;">
+            <div class="status-card no-project-box">
+                <h2>No Active Projects</h2>
+                <p>You have no active projects yet.</p>
+                <p>Once your Patreon payment is confirmed, your project will appear here.</p>
+                <p style="margin-top: 1rem;">If you haven't paid yet, please see the <a href="/instructions">instructions page</a>.</p>
+            </div>
+        </div>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            © 2025 click_to_prod. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
